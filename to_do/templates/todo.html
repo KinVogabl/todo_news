@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+    {% if request.user.is_authenticated %}
+    <p>Hello {{request.user}}</p>
+    {%endif%}
+
+    <a href="{% url 'create' %}">create todo +</a>
+
+    {% for task in tasks %}
+
+    <p>{{ task.text }}
+        <a href="{% url 'update' pk=task.id %}">update</a>
+        <a href="{% url 'delete' pk=task.id %}">delete</a>
+
+    </p>
+
+    {% endfor %}
+
+{% endblock %}
+
+
+
+
